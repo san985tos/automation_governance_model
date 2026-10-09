@@ -29,10 +29,12 @@ jobs:
         run: npx antora --fetch default-site.yml
       - name: Include presentation and exercise downloads
         run: |
-          cp -r public/slides www/slides
-          cp -r public/downloads www/downloads
+          mkdir -p www/slides www/docs/images www/downloads
+          cp -r public/slides/. www/slides/
+          cp -r public/docs/images/. www/docs/images/
+          cp -r public/downloads/. www/downloads/
           touch www/.nojekyll
-      - name: Validate published links and Fedora branding
+      - name: Validate published links and Open Demo days branding
         run: python scripts/validate_built_site.py www
       - uses: actions/upload-pages-artifact@v3
         with:

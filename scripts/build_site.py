@@ -19,6 +19,12 @@ def inline(text):
     value = html.escape(text)
     value = re.sub(r'`([^`]+)`', r'<code>\1</code>', value)
     value = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', value)
+    def picture(match):
+        label, url = match.groups()
+        if url.startswith('images/'):
+            url = 'assets/' + url
+        return f'<img class="workshop-image" src="{url}" alt="{label}" loading="lazy">'
+    value = re.sub(r'!\[([^]]+)\]\(([^)]+)\)', picture, value)
     def link(match):
         label, url = match.groups()
         if url.endswith('.md') and (ROOT / 'docs' / url).exists():
@@ -93,6 +99,9 @@ def to_adoc(text):
             code = not code
         elif code:
             out.append(line)
+        elif re.fullmatch(r'!\[([^]]+)\]\(images/([^)]+)\)', line):
+            match = re.fullmatch(r'!\[([^]]+)\]\(images/([^)]+)\)', line)
+            out.append(f'image::{match[2]}[{match[1]}]')
         elif line.startswith('|'):
             table = []
             while i < len(lines) and lines[i].startswith('|'):
@@ -135,7 +144,10 @@ def copy_downloads(target):
 def main():
     PUBLIC.mkdir(exist_ok=True)
     (PUBLIC / 'assets').mkdir(exist_ok=True)
-    shutil.copyfile(ROOT / 'ui-supplemental/img/fedora-blue.png', PUBLIC / 'assets/fedora-blue.png')
+    shutil.copyfile(ROOT / 'ui-supplemental/img/open-demo-days.png', PUBLIC / 'assets/open-demo-days.png')
+    shutil.copytree(ROOT / 'docs/images', PUBLIC / 'assets/images', dirs_exist_ok=True)
+    shutil.copytree(ROOT / 'docs/images', PUBLIC / 'docs/images', dirs_exist_ok=True)
+    shutil.copytree(ROOT / 'docs/images', ROOT / 'workshop/documentation/modules/ROOT/images', dirs_exist_ok=True)
     shutil.copytree(ROOT / 'slides', PUBLIC / 'slides', dirs_exist_ok=True)
     shutil.copyfile(ROOT / 'web/style.css', PUBLIC / 'assets/style.css')
     shutil.copyfile(ROOT / 'web/app.js', PUBLIC / 'assets/app.js')
@@ -162,16 +174,18 @@ def main():
         prev = f'<a href="{NAV[index-1]["slug"]}.html">Anterior</a>' if index else '<span></span>'
         nxt = f'<a href="{NAV[index+1]["slug"]}.html">Siguiente</a>' if index+1 < len(NAV) else '<span></span>'
         downloads = '<section class="downloads"><h2>Material editable</h2><p><a href="downloads/workshop-lab.zip">Descargar kit de laboratorio</a></p><p><a href="downloads/templates/use-case.md">Caso de uso</a> · <a href="downloads/templates/raci-editable.csv">RACI editable</a> · <a href="downloads/templates/checklist.md">Checklist</a></p></section>' if index == 0 else ''
-        hero = '<div class="hero"><div><p class="eyebrow">WORKSHOP · ANSIBLE / AAP</p><p class="hero-title">Gobierno de<br>automatización</p><p>Decisiones claras. Evidencia desde el caso de uso hasta el output.</p></div><img src="assets/fedora-blue.png" alt="Fedora azul de Psehgaft"></div>' if index == 0 else ''
+        hero = '<div class="hero"><div><p class="eyebrow">WORKSHOP · ANSIBLE / AAP</p><p class="hero-title">Gobierno de<br>automatización</p><p>Decisiones claras. Evidencia desde el caso de uso hasta el output.</p></div><img src="assets/open-demo-days.png" alt="Open Demo days — Open Source Labs"></div>' if index == 0 else ''
         page = f"""<!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{html.escape(title)} — Fedora Demo Platform</title><link rel="stylesheet" href="assets/style.css"><script src="assets/app.js" defer></script></head><body>
-<a class="skip" href="#content">Saltar al contenido</a><header><button id="menu-toggle" aria-expanded="false" aria-controls="sidebar">Menú</button><a class="brand" href="index.html"><img src="assets/fedora-blue.png" alt="Fedora azul"><span>Fedora <small>Demo Platform</small></span></a><span class="header-title">Modelos de gobierno de automatización</span><a href="slides/index.html">Presentación</a><a href="https://github.com/Open-Industries/automation_governance_model">GitHub</a></header>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{html.escape(title)} — Open Demo days</title><link rel="stylesheet" href="assets/style.css"><script src="assets/app.js" defer></script></head><body>
+<a class="skip" href="#content">Saltar al contenido</a><header><button id="menu-toggle" aria-expanded="false" aria-controls="sidebar">Menú</button><a class="brand" href="index.html"><img src="assets/open-demo-days.png" alt="Open Demo days"><span>Open Demo <small>days</small></span></a><span class="header-title">Modelos de gobierno de automatización</span><a href="slides/index.html">Presentación</a><a href="https://github.com/san985tos/automation_governance_model">GitHub</a></header>
 <nav id="sidebar" aria-label="Workshop"><p class="nav-title">GOBIERNO DE AUTOMATIZACIÓN</p><p class="version">Versión main · Español</p><label for="nav-search">Buscar sección</label><input id="nav-search" type="search" placeholder="Filtrar navegación">{sidebar}<a href="downloads/workshop-lab.zip">Kit descargable</a></nav>
-<div class="workspace"><div class="toolbar">Fedora Demo Platform / Workshop / {html.escape(title)}</div><div class="content-layout"><main id="content">{hero}{body}{downloads}<nav class="pagination" aria-label="Entre secciones">{prev}{nxt}</nav></main><aside aria-label="En esta página"><p>EN ESTA PÁGINA</p>{toc_html}</aside></div><footer>Fedora Demo Platform · Open Industries<br><small>Workshop comunitario. Datos sintéticos de laboratorio.</small></footer></div></body></html>"""
+<div class="workspace"><div class="toolbar">Open Demo days / Workshop / {html.escape(title)}</div><div class="content-layout"><main id="content">{hero}{body}{downloads}<nav class="pagination" aria-label="Entre secciones">{prev}{nxt}</nav></main><aside aria-label="En esta página"><p>EN ESTA PÁGINA</p>{toc_html}</aside></div><footer>Open Demo days · Open Industries<br><small>Workshop comunitario. Datos sintéticos de laboratorio.</small></footer></div></body></html>"""
         (PUBLIC / (slug + '.html')).write_text(page)
         adoc_name = 'index' if index == 0 else slug
         adoc = to_adoc(text)
         if index == 0:
+            heading, rest = adoc.split('\n', 1)
+            adoc = heading + '\n\nimage::open-demo-days.png[Open Demo days — Open Source Labs,640]\n' + rest
             adoc += '\n== Material editable\n\nlink:../../downloads/workshop-lab.zip[Descargar kit de laboratorio]\n\nlink:../../slides/index.html[Presentación navegable]\n'
         (pages / (adoc_name + '.adoc')).write_text(adoc)
         nav_adoc.append(f'* xref:{adoc_name}.adoc[{title}]')

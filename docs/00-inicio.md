@@ -3,7 +3,7 @@
 ## Resultado del workshop
 Cada equipo entrega un caso de uso versionado, un RACI firmado, un playbook de laboratorio, evidencia de pruebas, un contrato de output y un plan de promoción a AAP. El comité transversal revisa el conjunto y acuerda el modelo federado de gobierno para los siete dominios.
 
-**Identidad:** Fedora Demo Platform, con la fedora azul proporcionada por Heber Romero. Iniciativa comunitaria de Open Industries. El nombre identifica este workshop y no implica patrocinio oficial de Fedora. Ansible Automation Platform (AAP) conserva su nombre técnico.
+**Identidad:** Open Demo days, con la imagen de Open Source Labs proporcionada para el evento. Iniciativa comunitaria de Open Industries. Ansible Automation Platform (AAP) conserva su nombre técnico.
 
 ## Dos recorridos
 | Recorrido | Duración | Preparación | Resultado |
@@ -24,7 +24,7 @@ Las duraciones originales suman 9 h 15 min a 11 h 15 min de contenido. Dos medio
 
 ## Ejecución local
 ```bash
-git clone https://github.com/Open-Industries/automation_governance_model.git
+git clone https://github.com/san985tos/automation_governance_model.git
 cd automation_governance_model
 python3.11 -m venv .venv
 source .venv/bin/activate
@@ -41,7 +41,7 @@ La segunda ejecución debe reportar `changed=0`. Los archivos en `/tmp/automatio
 python scripts/build_site.py
 python -m http.server 8000 --directory public
 ```
-Abrir `http://localhost:8000`. El portal local usa el mismo contenido del workshop. La publicación Antora utiliza el tema Showroom de la referencia y personalización Fedora. `slides/index.html` contiene la presentación navegable con flechas del teclado y vista imprimible.
+Abrir `http://localhost:8000`. El portal local usa el mismo contenido del workshop. La publicación Antora utiliza el tema Showroom de la referencia y personalización Open Demo days. `slides/index.html` contiene la presentación navegable con flechas del teclado y vista imprimible.
 
 ## Criterios de salida
 - Un A por etapa y al menos un R. A/R cuenta como ambos.

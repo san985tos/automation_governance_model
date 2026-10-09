@@ -1,4 +1,4 @@
-"""Verify file links and Fedora branding in the generated Antora website."""
+"""Verify file links and Open Demo days branding in the generated Antora website."""
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
@@ -30,5 +30,5 @@ for page in pages:
         assert target.exists(), f'Broken built link in {page.relative_to(root)}: {ref}'
     if 'automation-governance/main/' in str(page):
         assert '<html lang="es">' in source
-        assert 'Fedora Demo Platform' in source and 'fedora-blue.png' in source
-print(f'Validated {len(pages)} built HTML pages and Fedora branding')
+        assert 'Open Demo days' in source and 'open-demo-days.png' in source
+print(f'Validated {len(pages)} built HTML pages and Open Demo days branding')

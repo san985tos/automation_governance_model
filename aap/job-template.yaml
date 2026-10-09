@@ -8,7 +8,7 @@ spec:
   organization: automation-governance-lab
   project:
     name: automation-governance
-    scm_url: https://github.com/Open-Industries/automation_governance_model.git
+    scm_url: https://github.com/san985tos/automation_governance_model.git
     scm_revision: REPLACE_WITH_REVIEWED_COMMIT
     credential_reference: scm-readonly
   inventory: governance-local

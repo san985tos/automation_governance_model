@@ -49,6 +49,40 @@ Dos semanas antes, solicitar casos por dominio y confirmar plataforma. Una seman
 
 En cada bloque explicar el concepto, mostrar una evidencia concreta y pedir una decisión al equipo. Registrar decisiones sobre owners, riesgo y promociones. Evitar dedicar el ejercicio completo a instalar herramientas.
 
+== Secuencia visual de Open Demo days
+Las actividades visuales se realizan dentro de los tiempos ya asignados, sin ampliar la agenda.
+
+[cols="1,1,1,1",options="header"]
+|===
+|Momento
+|Imagen
+|Guía del facilitador
+|Evidencia esperada
+|Apertura
+|Open Demo days / Open Source Labs
+|Presentar objetivo y entregables
+|Caso y equipo asignados
+|Modelo (10 min)
+|Recorrido de cinco etapas
+|Conectar discovery con documentos aprobados
+|Brechas por etapa
+|Roles (10 min)
+|Estructura de gobierno
+|Nombrar funciones, personas y suplentes
+|Mapa de responsabilidades
+|RACI (10 min)
+|Matriz de procesos y roles
+|Corregir una fila sin A y discutir independencia
+|Fila acordada y validada
+|Ejercicio y cierre
+|Recorrido y RACI
+|Mostrar evidencias y decisiones pendientes
+|Expediente y roadmap
+|===
+
+
+En la presentación, las imágenes se muestran completas y mantienen su proporción. Abrir la matriz a tamaño completo para leer los roles antes de debatir.
+
 == Alternativas por disponibilidad
 Sin AAP, realizar el laboratorio local y completar el contrato de configuración como recorrido guiado. Sin destinos por dominio, mantener los recursos sintéticos. Con AAP y sandbox autorizado, agregar una prueba de integración sólo después de aplicar gates y definir recuperación.
 

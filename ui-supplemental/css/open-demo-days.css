@@ -1,0 +1,3 @@
+/* Preserve the Showroom theme typography, layout and colors. */
+.doc .imageblock img {max-width:100%;height:auto;object-fit:contain}
+.navbar-logo-img {object-fit:contain}

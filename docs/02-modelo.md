@@ -1,5 +1,20 @@
 # 2. Modelo de gobierno
 
+## Recorrido de construcción del gobierno
+![Cinco etapas de gobierno: discovery, roles y arquitectura, procesos, elementos de gobierno y documentos](images/recorrido-gobierno.png)
+
+La imagen guía cinco etapas de adopción, con colaboración entre DevOps, IT Ops, SecOps y NetOps. Estas etapas agrupan las decisiones del workshop; el ciclo de vida de cada automatización se detalla en el bloque 5.
+
+| Etapa visual | Trabajo guiado | Bloques del workshop | Evidencia de salida |
+| --- | --- | --- | --- |
+| 1. Discovery | Identificar problema, consumidor, línea base y riesgo | Fundamentos y ejercicio | Ficha de caso priorizado |
+| 2. Roles and Architecture | Asignar owner, suplentes y entornos DEV/QA/PRD | Modelo, roles y AAP | RACI y arquitectura acordados |
+| 3. Processes | Inventariar procesos, estimar valor y ordenar pilotos | Ciclo de vida y roadmap | Backlog con prioridad y métrica |
+| 4. Analysis of other Elements of Governance | Revisar Git, playbooks, pruebas y controles | Git y controles | PR con evidencia de validación |
+| 5. Documents Governance | Acordar políticas y aprobar expediente | Ejercicio y cierre | Modelo aprobado, output aceptado y revisión programada |
+
+**Actividad guiada (10 minutos del bloque de gobierno):** ubicar el caso del equipo en las cinco etapas. Registrar una brecha, una evidencia requerida y un responsable por etapa. Usar esas brechas para el roadmap de 90 días.
+
 ## Principios y reglas aplicables
 | Principio | Regla | Owner del control |
 | --- | --- | --- |
