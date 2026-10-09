@@ -13,6 +13,45 @@ Workshop comunitario de Open Industries para institucionalizar el gobierno de An
 - Plantillas editables en `templates/`, contratos de configuración en `aap/`
 - Siete playbooks ejecutables de laboratorio y fichas de integración en `examples/`
 
+## Roles por etapa del ciclo de vida
+Resumen de quién rinde cuentas (A) y quién ejecuta (R) en cada etapa. El detalle está en [RACI global](docs/03-roles-raci.md) y [AAP y ciclo de vida](docs/05-ciclo-vida.md).
+
+```text
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│ 1 DEFINICIÓN    │    │ 2 DISEÑO        │    │ 3 DESARROLLO    │    │ 4 VALIDACIÓN    │    │ 5 REVISIÓN      │
+│ A: Dueño        │───>│ A: Dueño        │───>│ A: Dev          │───>│ A: Dev          │───>│ A: Seguridad    │
+│ R: Dueño        │    │ R: Dev          │    │ R: Dev          │    │ R: Dev          │    │ R: Seguridad    │
+└─────────────────┘    └─────────────────┘    └─────────────────┘    └─────────────────┘    └─────────────────┘
+                                                                                                     │
+                                                                                                     v
+┌─────────────────┐    ╔═════════════════╗    ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│ 9 SOLICITUD     │    ║ AUTORIZAR PROD. ║    │ 8 PRUEBAS       │    │ 7 AAP           │    │ 6 RELEASE       │
+│ A: Solicitante  │<───║ A: Dueño        ║<───│ A: Dueño        │<───│ A: AAP Admin    │<───│ A: SCM          │
+│ R: Ops          │    ║ R: Dueño        ║    │ R: Dev + Dom.   │    │ R: AAP Admin    │    │ R: Dev          │
+└─────────────────┘    ╚═════════════════╝    └─────────────────┘    └─────────────────┘    └─────────────────┘
+         │
+         v
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│ 10 EJECUCIÓN    │    │ 11 ENTREGA      │    │ 12 ACEPTACIÓN   │    │ 13 OPERACIÓN    │
+│ A: Dueño        │───>│ A: Dueño        │───>│ A: Solicitante  │───>│ A: Dueño        │
+│ R: Ops          │    │ R: Ops          │    │ R: Ops          │    │ R: Ops+AAP Adm* │
+└─────────────────┘    └─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
+| Abreviatura | Significado |
+|---|---|
+| **A** / **R** | Accountable (rinde cuentas) / Responsible (ejecuta) |
+| **Dueño** | Dueño del caso de uso |
+| **Dev** | Desarrollo de playbooks |
+| **Seguridad** | Seguridad y Compliance |
+| **SCM** | Git y SCM |
+| **Dom.** | Dominio técnico |
+| **Ops** | Operaciones y SRE |
+| **Solicitante** | Solicitante o consumidor |
+
+- El recuadro de doble línea (**AUTORIZAR PROD.**) aparece solo en la matriz RACI, no como etapa del mapa de ciclo de vida; se ubica entre Pruebas y Solicitud.
+- `*` En la etapa 13, AAP Admin es R solo en el retiro. En monitoreo y mejora, el R es solo Ops.
+
 ## Laboratorio
 ```bash
 python3.11 -m venv .venv
