@@ -2,8 +2,12 @@
   {
     "title": "Gobierno de automatización",
     "subtitle": "Workshop de Ansible / AAP",
-    "lead": "Fedora Demo Platform. Open Industries.",
-    "body": "Resultado: un caso por dominio con responsables, gates y evidencia hasta la aceptación del output."
+    "lead": "Open Demo days. Open Industries.",
+    "body": "Resultado: un caso por dominio con responsables, gates y evidencia hasta la aceptación del output.",
+    "image": {
+      "src": "../docs/images/open-demo-days.png",
+      "alt": "Open Demo days — Open Source Labs"
+    }
   },
   {
     "title": "Resultados del workshop",
@@ -27,7 +31,11 @@
     "title": "Modelo federado",
     "subtitle": "Dominios con controles comunes",
     "lead": "El dominio posee el caso y su aceptación.",
-    "body": "Seguridad, SCM y AAP mantienen controles transversales. Operaciones entrega y monitorea el resultado."
+    "body": "Seguridad, SCM y AAP mantienen controles transversales. Operaciones entrega y monitorea el resultado.",
+    "image": {
+      "src": "../docs/images/recorrido-gobierno.png",
+      "alt": "Cinco etapas de construcción del gobierno"
+    }
   },
   {
     "title": "2. Modelo de gobierno",
@@ -51,13 +59,21 @@
     "title": "3. Roles y responsabilidades",
     "subtitle": "Ocho roles explícitos",
     "lead": "Dueño, Dev, Seguridad, SCM, AAP Admin y dominio técnico.",
-    "body": "Operaciones ejecuta y entrega. El solicitante valida la utilidad del resultado."
+    "body": "Operaciones ejecuta y entrega. El solicitante valida la utilidad del resultado.",
+    "image": {
+      "src": "../docs/images/estructura-gobierno.png",
+      "alt": "Funciones y capacidades transversales del gobierno"
+    }
   },
   {
     "title": "RACI por etapa",
     "subtitle": "Exactamente un A y al menos un R",
     "lead": "El responsable final decide. El responsable de ejecución entrega evidencia.",
-    "body": "La matriz distingue ejecución, entrega y aceptación. Cada owner registra suplente."
+    "body": "La matriz distingue ejecución, entrega y aceptación. Cada owner registra suplente.",
+    "image": {
+      "src": "../docs/images/raci-procesos-roles.png",
+      "alt": "Matriz RACI de referencia; completar filas sin A en el ejercicio"
+    }
   },
   {
     "title": "4. Git y repositorios",
