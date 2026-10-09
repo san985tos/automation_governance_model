@@ -1,5 +1,44 @@
 = 3. Roles y responsabilidades
 
+== Estructura organizativa de referencia
+image::estructura-gobierno.png[Gobierno de automatización con Platform Owner, Operaciones, Aplicaciones, Infraestructura, Desarrollo, Seguridad y Auditoría; AAP, SCM y comité transversales]
+
+Las franjas horizontales representan funciones participantes; las verticales representan capacidades transversales. No constituyen una jerarquía de permisos ni otorgan acceso automático a producción. El comité acuerda políticas y excepciones; cada decisión operativa conserva un responsable final.
+
+[cols="1,1,1",options="header"]
+|===
+|Función de la imagen
+|Correspondencia en el workshop
+|Decisión o entrega
+|Ansible Platform Owner
+|AAP Admin y owner designado de plataforma
+|Servicio de plataforma, RBAC y continuidad
+|Gerencia de Operaciones
+|Operaciones/SRE y dueño del servicio
+|Ventana, ejecución, incidentes y entrega
+|Soporte de Aplicaciones
+|Dominio técnico y consumidor
+|Verificación funcional y aceptación
+|Infraestructura / Despliegue Infraestructura
+|Dominio técnico y Operaciones
+|Diseño del destino y ejecución autorizada
+|Desarrollo
+|Dev
+|Playbooks, pruebas y recuperación
+|Seguridad
+|Seguridad y Compliance
+|Riesgo, permisos, secretos y controles
+|Auditoría
+|Revisor de evidencia independiente
+|Trazabilidad y evaluación de cumplimiento
+|RHAAP / SCM (Git) / Seguridad / Comité
+|AAP Admin, SCM, Seguridad y foro de gobierno
+|Controles compartidos y revisión del modelo
+|===
+
+
+*Actividad (10 minutos del bloque RACI):* nombrar personas y suplentes para cada función. Distinguir el owner del servicio de plataforma de su administrador técnico y acordar cómo se evita que el autor apruebe su propio cambio.
+
 == Roles por ámbito
 [cols="1,1,1",options="header"]
 |===
@@ -34,6 +73,13 @@
 
 
 Los dominios son Virtualización, Network, Cloud, Plataformas, Seguridad, Infraestructura y Storage. El dueño se asigna por dominio. El rol de dominio técnico representa a sus especialistas. Seguridad como dominio puede crear automatizaciones, pero su revisión de seguridad debe asignarse a una persona independiente.
+
+== Matriz visual para discusión
+image::raci-procesos-roles.png[Matriz RACI de doce procesos y ocho funciones organizativas]
+
+La imagen suministrada es una referencia inicial para discutir procesos y roles. Conservarla permite comparar el punto de partida con la matriz operativa de este workshop. Algunas filas, como ejecución en producción, parches y despliegue de aplicaciones, no muestran un A explícito. La matriz validada de abajo completa la responsabilidad final y separa entrega de aceptación.
+
+*Actividad (10 minutos del bloque RACI):* elegir una fila de la imagen, identificar sus R, confirmar quién debe ser A y justificar C e I. Auditoría revisa evidencia; asignarle aprobación operativa requiere una decisión expresa de la organización. Registrar los cambios en `templates/raci-editable.csv` y comprobar exactamente un A y al menos un R por actividad.
 
 == RACI global propuesto
 A = responsable final de la decisión. R = responsable de ejecutar la actividad. C = consultado. I = informado. A/R cumple ambos roles. Debe existir exactamente un A y al menos un R por fila. Varias personas pueden ser R si sus entregas están delimitadas.
